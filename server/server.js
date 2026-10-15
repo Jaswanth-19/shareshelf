@@ -1,4 +1,3 @@
-
 const dns = require("node:dns");
 dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
@@ -7,6 +6,7 @@ require("dotenv").config();
 const express = require("express");
 const connectDB = require("./config/db");
 const healthRoutes = require("./routes/healthRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 const PORT = 5000;
@@ -20,8 +20,9 @@ app.get("/", (req, res) => {
   });
 });
 
-// Health API route
+// API routes
 app.use("/api/health", healthRoutes);
+app.use("/api/users", userRoutes);
 
 // Start server after connecting to MongoDB
 async function startServer() {
