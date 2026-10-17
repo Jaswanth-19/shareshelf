@@ -8,6 +8,7 @@ const connectDB = require("./config/db");
 const healthRoutes = require("./routes/healthRoutes");
 const userRoutes = require("./routes/userRoutes");
 const itemRoutes = require("./routes/itemRoutes");
+const borrowRequestRoutes = require("./routes/borrowRequestRoutes");
 
 const app = express();
 const PORT = 5000;
@@ -25,6 +26,8 @@ app.get("/", (req, res) => {
 app.use("/api/health", healthRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/items", itemRoutes);
+app.use("/api/borrow-requests", borrowRequestRoutes);
+
 
 // Start server after connecting to MongoDB
 async function startServer() {
